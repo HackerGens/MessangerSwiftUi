@@ -36,7 +36,7 @@ struct ContentView : View {
                 UITableView.appearance().separatorStyle = .singleLine
             }
             HStack {
-                TextField("Message...", text: $composedMessage).frame(minHeight: CGFloat(30))
+                TextField("Message...", text: $composedMessage).frame(minHeight: CGFloat(30)).textFieldStyle(RoundedBorderTextFieldStyle())
                 Button(action: sendMessage) {
                     Text("Send")
                 }
@@ -56,8 +56,10 @@ struct ChatRow : View {
                 HStack {
                     Group {
                         Image(chatMessage.avatar).resizable()
-                            .frame(width: 40, height: 40, alignment: .center)
+                            .frame(width: 50, height: 50, alignment: .center)
                             .cornerRadius(20)
+                        .overlay(Circle().stroke(Color.white, lineWidth: 5))
+                        
                         Text(chatMessage.message)
                             .padding(10)
                             .foregroundColor(Color.white)
@@ -76,18 +78,15 @@ struct ChatRow : View {
                             .background(chatMessage.color)
                             .cornerRadius(10)
                         Image(chatMessage.avatar).resizable()
-                            .frame(width: 40, height: 40, alignment: .center)
+                            .frame(width: 50, height: 50, alignment: .center)
                             .cornerRadius(20)
+                            .overlay(Circle().stroke(Color.white, lineWidth: 5))
                     }
                 }
             }
         }
     }
 }
-
-
-
-
 
 #if DEBUG
 struct ContentView_Previews : PreviewProvider {

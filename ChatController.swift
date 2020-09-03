@@ -49,7 +49,11 @@ class ChatController : ObservableObject {
                         for result in currentConditions {
                             let msg = result["msg"] as! String
                             self.messages.append(ChatMessage(message: msg, avatar: "man", color: .blue, isMe: true))
+                            
+                            self.messages.append(ChatMessage(message: msg, avatar: "lady", color: .gray, isMe: false))
+                            
                         }
+                        
                         
                     } catch {
                         print(error)
